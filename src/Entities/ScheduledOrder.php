@@ -4,8 +4,8 @@ namespace App\Entities;
 
 use Carbon\Carbon;
 
-class ScheduledOrder
-{
+class ScheduledOrder {
+
     /**
      * The delivery date of this scheduled order.
      *
@@ -40,9 +40,65 @@ class ScheduledOrder
      * @param \Carbon\Carbon     $deliveryDate
      * @param \App\Entities\bool $isInterval
      */
-    public function __construct(Carbon $deliveryDate, bool $isInterval)
-    {
+    public function __construct(Carbon $deliveryDate, bool $isInterval) {
         $this->deliveryDate = $deliveryDate;
-        $this->interval     = $isInterval;
+        $this->interval = $isInterval;
     }
+
+    /**
+     * get interval.
+     * 
+     * @return boolean
+     */
+    public function isInterval() {
+        return $this->interval;
+    }
+
+    /**
+     * set holiday.
+     * 
+     *  @var boolean
+     */
+    public function setHoliday($holiday) {
+
+        $this->holiday = $holiday === $this->interval ? $holiday : !$holiday;
+    }
+
+    /**
+     * get holiday.
+     * 
+     * @return boolean
+     */
+    public function isHoliday() {
+        return $this->holiday;
+    }
+
+    /**
+     * get delivery date.
+     * 
+     * @return date
+     */
+    public function getDeliveryDate() {
+        return $this->deliveryDate;
+    }
+
+    /**
+     * set optin.
+     * 
+     * @var boolean
+     */
+    public function setOptIn($optin) {
+        return $this->optIn = $optin === $this->interval ? !$optin : $optin;
+        ;
+    }
+
+    /**
+     * get delivery date.
+     * 
+     * @return boolean
+     */
+    public function isOptIn() {
+        return $this->optIn;
+    }
+
 }
